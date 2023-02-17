@@ -1,2 +1,2 @@
 #!/bin/bash
-2. gcc -S $CFILE && mv $(basename $CFILE .c).s $(dirname $CFILE)
+gcc -c $CFILE -o c
