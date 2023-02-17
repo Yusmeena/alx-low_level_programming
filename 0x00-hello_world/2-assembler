@@ -1,1 +1,2 @@
-gcc -S $CFILE && mv $(basename $CFILE .c).s $(dirname $CFILE)
+#!/bin/bash
+gcc -S $CFILE
