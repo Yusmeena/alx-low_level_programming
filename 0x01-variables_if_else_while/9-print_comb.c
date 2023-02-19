@@ -1,23 +1,25 @@
 #include <stdio.h>
+#include <unistd.h>
 /**
- * main - Prints all possible combinations
- *
- * Return: 0 (success)
+ * main - Entry point
+ * Description: prints numbers
+ * Return: Always 0 (success)
  */
 int main(void)
 {
-        int c;
+	int i;
 
-        for (c = '0'; c <= '9' ; c++)
-        {
-                putchar(c);
+	for (i = '0'; i <= '9' ; i++)
+	{
+		putchar(i);
 
-                if (c != '9')
-                {
-                        putchar(',');
-                        putchar(' ');
-                }
-        }
-        putchar('\n');
-        return (0);
+		if (i != '9')
+		{
+			putchar(',');
+			putchar(' ');
+		}
+	}
+
+	putchar('\n');
+	return (0);
 }
