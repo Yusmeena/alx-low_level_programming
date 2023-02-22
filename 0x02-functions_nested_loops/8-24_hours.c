@@ -1,55 +1,32 @@
 #include "main.h"
 
+/* more headers goes there */
 
+/* betty style doc for function main goes there */
+/**
+ * jack_bauer - Entry point
+ *
+ * @i & j: is the hour and minutes of the day
+ *
+ * Return: 1 (Success) otherwise 0
+ */
 
-        /**
+void jack_bauer(void)
+{
+	int i;
 
-         * jack_bauer - prints every minute of the day of Jack Bauer
+	for (i = 0; i <= 23; i += 1)
+	{
+		int j;
 
-         * starting from 00:00 to 23:59
-
-         */
-
-        void jack_bauer(void)
-
-        {
-
-                int i, j;
-
-
-
-                i = 0;
-
-
-
-                while (i < 24)
-
-                {
-
-                        j = 0;
-
-                        while (j < 60)
-
-                        {
-
-                                _putchar((i / 10) + '0');
-
-                                _putchar((i % 10) + '0');
-
-                                _putchar(':');
-
-                                _putchar((j / 10) + '0');
-
-                                _putchar((j % 10) + '0');
-
-                                _putchar('\n');
-
-                                j++;
-
-                        }
-
-                        i++;
-
-                }
-
-        }
+		for (j = 0; j < 60; j += 1)
+		{
+			_putchar (i / 10 + '0');
+			_putchar (i % 10 + '0');
+			_putchar (':');
+			_putchar (j / 10 + '0');
+			_putchar (j % 10 + '0');
+			_putchar ('\n');
+		}
+	}
+}

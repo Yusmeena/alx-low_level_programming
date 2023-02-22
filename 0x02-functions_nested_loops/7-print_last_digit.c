@@ -1,43 +1,27 @@
 #include "main.h"
 
+/* more headers goes there */
+
+/* betty style doc for function main goes there */
 /**
-
- * print_last_digit - prints the last digit of a number
-
- * @n: the int to extract the last digit from
-
- * Return: value of the last digit
-
+ * print_last_digit -Entry point
+ *
+ * @n: is the last number to compute
+ *
+ * Return: 1 (Success) otherwise 0
  */
 
 int print_last_digit(int n)
-
 {
+	int i;
 
-        int a;        
+	i = n % 10;
 
+	if (i < 0)
+	{
+		i = i * (-1);
+	}
+	_putchar (i + '0');
 
-        if (n < 0)
-
-                n = -n;
-
-
-        a = n % 10;
-
-                
-
-        if (a < 0)
-
-                a = -a;
-
-        
-
-        _putchar(a + '0');
-
-        
-
-        return (a);
-
-                
-
+	return (i);
 }

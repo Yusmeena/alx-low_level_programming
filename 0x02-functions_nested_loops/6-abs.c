@@ -1,29 +1,24 @@
 #include "main.h"
+#include <stdio.h>
+/* more headers goes there */
 
+/* betty style doc for function main goes there */
+/**
+ * _abs -Entry point
+ *
+ * @n: is the absolute number to compute
+ *
+ * Return: 1 (Success) otherwise 0
+ */
 
-
-        /**
-
-         * _abs - computes the absolute value of an integer
-
-         * @n: the int to check
-
-         * Return: the absolute value of int
-
-         */
-
-        int _abs(int n)
-
-        {
-
-                if (n >= 0)
-
-                {
-
-                        return (n);
-
-                }
-
-                return (-n);
-
-        }
+int _abs(int n)
+{
+	if (n >= 0)
+	{
+	return (n);
+	}
+	else
+	{
+	return (-n);
+	}
+}
