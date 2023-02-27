@@ -1,24 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "main.h"
 /**
- * main - generates keygen.
- * Return: 0 Always.
+ * _strlen - gets character string
+ *
+ * @s: character to getstring
+ * Return: returns length
  */
-int main(void)
+int _strlen(char *s)
 {
-	int r = 0, c = 0;
-	time_t t;
+	int i;
 
-	srand((unsigned int) time(&t));
-	while (c < 2772)
-	{
-		r = rand() % 128;
-		if ((c + r) > 2772)
-			break;
-		c = c + r;
-		printf("%c", r);
-	}
-	printf("%c\n", (2772 - c));
-	return (0);
+	for (i = 0; s[i] != '\0'; i++)
+	{}
+	return (i);
 }
