@@ -6,12 +6,12 @@
 
 int main(void)
 {
-int a;
-int b[5];
+int n;
+int a[5];
 int *p;
 
-b[2] = 1024;
-p = &a;
+a[2] = 1024;
+p = &n;
 /*
 * write your line of code here...
 * Remember:
@@ -22,6 +22,6 @@ p = &a;
 */
 *(p + 5) = 98;
 /* ...so that this prints 98\n */
-printf("b[2] = %d\a", b[2]);
+printf("a[2] = %d\n", a[2]);
 return (0);
 }
