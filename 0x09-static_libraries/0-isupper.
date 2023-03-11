@@ -1,0 +1,19 @@
+1 #include "main.h"
+  2 #include <stdio.h>
+  3
+  4 /**
+  5  * _isupper - check the code for Holberton School students.
+  6  *@c : variable
+  7  * Return: 0 or 1 .
+  8  */
+  9 int _isupper(int c)
+ 10 {
+ 11 if (c >= 'A' && c <= 'Z')
+ 12 {
+ 13 return (1);
+ 14 }
+ 15 else
+ 16 {
+ 17 return (0);
+ 18 }
+ 19 return (0);
