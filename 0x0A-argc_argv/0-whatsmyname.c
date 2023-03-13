@@ -1,17 +1,15 @@
 #include "main.h"
 #include <stdio.h>
-
+#define UNUSED(x) (void)(x)
 /**
- * main - entry point
- * Description: prints the name of the program
- * @argc: number of command line arguements
- * @argv: an array of command line arguements
- * Return: 0
+ * main - main function
+ * @argc: argumentc
+ * @argv: vector of arguments
+ *Return: always 0
  */
-
 int main(int argc, char *argv[])
 {
-	printf("%s\n", argv[argc * 0]);
-
+	UNUSED(argc);
+	printf("%s\n", argv[0]);
 	return (0);
 }
