@@ -3,52 +3,52 @@
 #include "3-calc.h"
 /**
  * op_add - adds 5 functions
- * @x: int x
- * @y: int y
- * Return: sum of x and y
+ * @a: int a
+ * @b: int b
+ * Return: sum of a and b
  */
-int op_add(int x, int y)
+int op_add(int a, int b)
 {
-	return (x + y);
+	return (a + b);
 }
 /**
  * op_sub - subtracts
- * @x: int x
- * @y: int y
+ * @a: int a
+ * @b: int b
  * Return: difference
  */
-int op_sub(int x, int y)
+int op_sub(int a, int b)
 {
-	return (x - y);
+	return (a - b);
 }
 /**
  * op_mul - multiplies
- * @x: int x
- * @y: int y
+ * @a: int a
+ * @b: int b
  * Return: multipliy
  */
-int op_mul(int x, int y)
+int op_mul(int a, int b)
 {
-	return (x * y);
+	return (a * b);
 }
 /**
  * op_div - division
- * @x: int x
- * @y: int y
+ * @a: int a
+ * @b: int b
  * Return: division
  */
-int op_div(int x, int y)
+int op_div(int a, int b)
 {
-	return (x / y);
+	return (a / b);
 }
 /**
  * op_mod - modulos
- * @x: int x
- * @y: int y
+ * @a: int a
+ * @b: int b
  * Return: modulo of ints
  */
 
-int op_mod(int x, int y)
+int op_mod(int a, int b)
 {
-	return (x % y);
+	return (a % b);
 }
