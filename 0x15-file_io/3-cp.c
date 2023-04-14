@@ -1,72 +1,116 @@
 #include "main.h"
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
 #include <stdio.h>
 
-/**
- * error_file - checks if files can be opened.
- * @file_from: file_from.
- * @file_to: file_to.
- * @argv: arguments vector.
- * Return: no return.
- */
-void error_file(int file_from, int file_to, char *argv[])
-{
-	if (file_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Unable to read from file %s\n", argv[1]);
-		exit(98);
-	}
-	if (file_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Unable to write to %s\n", argv[2]);
-		exit(99);
-	}
-}
+#define BUFSIZE 1024
 
+static ssize_t read_file(char *file, char **buf, int fd);
+static void write_copy(char *file, int fd, char *buf, int len);
 /**
- * main - check the code for Holberton School students.
- * @argc: number of arguments.
- * @argv: arguments vector.
- * Return: return 0.
+ * main - This program copies the content of one file into another
+ * @ac: argument count.
+ * @av: argument values.
+ *
+ * Return: 0 (SUCCESS)
  */
-int main(int argc, char *argv[])
+int main(int ac, char *av[])
 {
-	int file_from, file_to, err_close;
-	ssize_t numchars, numwr;
-	char buff[1024];
+	int fd_0, fd_1, rd_len, error;
+	char *buff, *file_from, *file_to;
 
-	if (argc != 3)
+	buff = NULL;
+	rd_len = 1;
+	if (ac != 3)
 	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
-	file_from = open(argv[1], O_RDONLY);
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-	error_file(file_from, file_to, argv);
-
-	numchars = 1024;
-	while (numchars == 1024)
+	file_from = av[1];
+	file_to = av[2];
+	fd_0 = open(file_from, O_RDONLY);
+	fd_1 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	while (rd_len > 0)
 	{
-		numchars = read(file_from, buff, 1024);
-		if (numchars == -1)
-			error_file(-1, 0, argv);
-		numwr = write(file_to, buff, numchars);
-		if (numwr == -1)
-			error_file(0, -1, argv);
+	/* Read the content from origin file */
+	rd_len = read_file(file_from, &buff, fd_0);
+	if (!rd_len)
+		break;
+	/* Write out the buffer to destination */
+	write_copy(file_to, fd_1, buff, rd_len);
 	}
 
-	err_close = close(file_from);
-	if (err_close == -1)
+	free(buff);
+	error = close(fd_0);
+	if (error < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Unable to close fd %d\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_0);
 		exit(100);
 	}
-
-	err_close = close(file_to);
-	if (err_close == -1)
+	error = close(fd_1);
+	if (error < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Unable to close fd %d\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_1);
 		exit(100);
 	}
 	return (0);
+}
+/**
+ * read_file - function that read a file into a buffer
+ * @file: file to read form
+ * @buf: pointer to a pointer of a buffer.
+ * @fd: file descriptors
+ *
+ * Return: the current size of the buffer.
+ */
+static ssize_t read_file(char *file, char **buf, int fd)
+{
+	int rd_len;
+
+	if (fd < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+		exit(98);
+	}
+	if (!(*buf))
+		*buf = malloc(sizeof(char) * BUFSIZE);
+	if (!(*buf))
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+		exit(98);
+	}
+	rd_len = read(fd, *buf, BUFSIZE);
+	if (rd_len < 0)
+	{
+		free(*buf);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
+		exit(98);
+	}
+	return (rd_len);
+}
+
+/**
+ * write_copy - write the buffer to a file.
+ * @file: destination for contents in buffer
+ * @fd: file descriptors for the @file
+ * @buf: pointer to a buffer
+ * @len: current size of the buffer.
+ */
+static void write_copy(char *file, int fd, char *buf, int len)
+{
+	if (fd < 0 || !buf)
+	{
+		free(buf);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
+		exit(99);
+	}
+	if (write(fd, buf, len) < 0)
+	{
+		free(buf);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
+		exit(99);
+	}
 }
