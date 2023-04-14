@@ -12,12 +12,12 @@ void error_file(int file_from, int file_to, char *argv[])
 {
 	if (file_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Unable to read from file %s\n", argv[1]);
 		exit(98);
 	}
 	if (file_to == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Unable to write to %s\n", argv[2]);
 		exit(99);
 	}
 }
@@ -26,17 +26,17 @@ void error_file(int file_from, int file_to, char *argv[])
  * main - check the code for Holberton School students.
  * @argc: number of arguments.
  * @argv: arguments vector.
- * Return: Always zero (0).
+ * Return: return 0.
  */
 int main(int argc, char *argv[])
 {
 	int file_from, file_to, err_close;
-	ssize_t nchars, nwr;
+	ssize_t numchars, numwr;
 	char buff[1024];
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "%s\n", " cp file_from file_to");
+		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
 		exit(97);
 	}
 
@@ -50,22 +50,22 @@ int main(int argc, char *argv[])
 		numchars = read(file_from, buff, 1024);
 		if (numchars == -1)
 			error_file(-1, 0, argv);
-		nwr = write(file_to, buff, numchars);
-		if (nwr == -1)
+		numwr = write(file_to, buff, numchars);
+		if (numwr == -1)
 			error_file(0, -1, argv);
 	}
 
 	err_close = close(file_from);
 	if (err_close == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close filed %d\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Unable to close fd %d\n", file_from);
 		exit(100);
 	}
 
 	err_close = close(file_to);
 	if (err_close == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close filed %d\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Unable to close fd %d\n", file_from);
 		exit(100);
 	}
 	return (0);
