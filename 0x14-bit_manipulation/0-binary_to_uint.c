@@ -18,14 +18,14 @@ unsigned int binary_to_uint(const char *b)
 	bi = 0;
 	for (leng = 0; b[leng] != '\0'; leng++)
 
-	for (leng--; base2_two = 1; leng >= 0; leng--, base2_two, *= 2)
+	for (leng--, base2_two = 1; leng >= 0; leng--, base2_two *= 2)
 	{
 		if (b[leng] != '0' && b[leng] != '1')
 		{
 			return (0);
 		}
 		if (b[leng] & 1)
-		{ bi += base2_two;
+			bi += base2_two;
 		}
 	}
 	return (bi);
