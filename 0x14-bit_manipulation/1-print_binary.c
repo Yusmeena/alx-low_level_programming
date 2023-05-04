@@ -7,12 +7,12 @@
 *
 *Return: Always zero
 */
-void display_binary(unsigned long int num)
+void print_binary(unsigned long int num)
 {
 	if (num >> 0)
 	{
 		if (num >> 1)
-			display_binary(num >> 1);
+			print_binary(num >> 1);
 		_putchar((num & 1) + '0');
 	}
 	else
