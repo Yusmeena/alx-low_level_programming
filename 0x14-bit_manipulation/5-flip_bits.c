@@ -2,8 +2,8 @@
 
 /**
 * flip_bits - returns the number of bits you would
-* need to flip to get fkm ond number to another.
-* @n: number one (1)
+* need to flip to get from one number to another.
+* @n: number one (1).
 * @m: number two (2).
 *
 * Return: number of bits
