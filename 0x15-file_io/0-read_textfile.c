@@ -22,16 +22,16 @@ ssize_t read_textfile(const char *filename, size_t numletters)
 	if (filed == -1)
 		return (0);
 
-	buff = malloc(sizeof(char) * (letters));
+	buff = malloc(sizeof(char) * (numletters));
 	if (!buff)
-	return (0);
+		return (0);
 
-	nrd = read(filed, buff, letters);
+	nrd = read(filed, buff, numletters);
 	nwr = write(STDOUT_FILENO, buff, nrd);
+
 	close(filed);
 
 	free(buff);
 
 	return (nwr);
 }
-
