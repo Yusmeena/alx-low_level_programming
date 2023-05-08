@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* a function that append_text_to_file - appends text at the end of a file
+* Append_text_to_file- Appends text at the end of a file
 * @filename: filename
 * @text_content: added content
 *
@@ -26,7 +26,7 @@ int append_text_to_file(const char *filename, char *text_content)
 	{
 		for (letters = 0; text_content[letters]; letters++)
 			;
-	
+
 		rwr = write(file, text_content, letters);
 
 		if (rwr == -1)
