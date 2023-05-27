@@ -38,7 +38,7 @@ void endit_file(int endfile)
 
 	if (s == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: won't close folde %d\n", endfile);
+		dprintf(STDERR_FILENO, "Error: Cant close fd %d\n", endfile);
 	}
 }
 
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: copy file from file to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_frm_file to\n");
 		exit(97);
 	}
 
