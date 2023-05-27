@@ -148,7 +148,6 @@ void show_magic(char *pt)
 /**
 *check_syst - Function to check the version of the system
 *@pt: magic
-Return: there is no return
 */
 void check_syst(char *pt)
 {
@@ -171,7 +170,6 @@ void check_syst(char *pt)
 	show_missray(pt);
 	show_type(pt);
 	show_addr(pt);
-return(0);
 }
 /**
 *check_elf - check if it is els file
