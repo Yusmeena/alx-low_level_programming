@@ -7,7 +7,7 @@ void endit_file(int endfile);
 
 /**
 *this_buffer - allocate 1024 bytes for buffer
-*filename: name of the file storing the charater
+*@filename: name of the file storing the charater
 *Return: buffer
 */
 char *this_buffer(char *filename)
@@ -85,8 +85,8 @@ int main(int argc, char *argv[])
 
 		rwt = read(begin, filename, 1024);
 		exe = open(argv[2], O_WRONLY | O_APPEND);
-	
-	} while (rwt > 0);
+
+		} while (rwt > 0);
 
 	free(filename);
 	endit_file(begin);
