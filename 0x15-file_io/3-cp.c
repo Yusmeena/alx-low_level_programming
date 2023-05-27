@@ -18,7 +18,7 @@ char *this_buffer(char *filename)
 
 	if (create == NULL)
 	{
-		dprint(STDER_FILENO,
+		dprintf(STDER_FILENO,
 			"Error: Won't write to %s\n", filename);
 		exit(99);
 	}
@@ -38,7 +38,7 @@ void endit_file(int endfile);
 
 	if (c == -1)
 	{
-		dprint(STDER_FILENO, "Error: won't close folde %d\n", endfile);
+		dprintf(STDER_FILENO, "Error: won't close folde %d\n", endfile);
 	}
 }
 
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		disprint(STDERR_FILENO, "Usage: copy file from file to\n");
+		disprintf(STDERR_FILENO, "Usage: copy file from file to\n");
 		exit(97);
 	}
 
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	do {
 		if (begin == -1 || rwt == -1)
 		{
-			dprint(STDERR_FILENO,
+			dprintf(STDERR_FILENO,
 				"Error: Won't read frm file %s\n", argv[1]);
 			free(filename);
 			exit(98);
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 		wr = write(exe, filename, rwt);
 		if (exe == -1 || wr == -1)
 		{
-			dprint(STDERR_FILENO,
+			dprintf(STDERR_FILENO,
 				"Error: Won't write to %s\n", argv[2]);
 			free(filename);
 			exit(99);
