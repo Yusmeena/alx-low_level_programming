@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 
 	free(filename);
 	endit_file(begin);
-	end_file(exe);
+	endit_file(exe);
 
 	return (0);
 }
