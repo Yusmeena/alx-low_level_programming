@@ -206,11 +206,11 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	fold = open(argv[1], 0_RDONLY);
+	fold = open(argv[1], O_RDONLY);
 
 	if (fold < 0)
 	{
-		dprintf(STDER_FILENO, "Err: file unable to open\n");
+		dprintf(STDERR_FILENO, "Err: file unable to open\n");
 		exit(98);
 	}
 
