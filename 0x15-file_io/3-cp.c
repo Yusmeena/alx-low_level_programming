@@ -84,12 +84,12 @@ int main(int argc, char *argv[])
 		}
 
 		rwt = read(begin, filename, 1024);
-		exe = open(argv[2], 0_WRONLY | 0_APPEND);
+		exe = open(argv[2], O_WRONLY | O_APPEND);
 	
 	} while (rwt > 0);
 
 	free(filename);
-	end_file(begin);
+	endit_file(begin);
 	end_file(exe);
 
 	return (0);
