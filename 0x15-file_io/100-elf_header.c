@@ -214,7 +214,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	seek(fold, 0, SEEK_SET);
+	lseek(fold, 0, SEEK_SET);
 	ret_read = read(fold, pt, 27);
 
 	if (ret_read == -1)
