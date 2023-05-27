@@ -58,7 +58,7 @@ void show_type(char *pt)
 {
 	char buffer = pt[16];
 
-	if (ptr[5] == 1)
+	if (pt[5] == 1)
 		buffer = pt[16];
 	else
 		buffer = pt[17];
@@ -83,7 +83,7 @@ void show_type(char *pt)
 */
 void show_missray(char *pt)
 {
-	char mi = [7];
+	char mi = pt[7];
 
 	printf(" MI/SSR:			");
 	if (mi == 0)
@@ -95,7 +95,7 @@ void show_missray(char *pt)
 	else
 		printf("<Unknow: %x>\n", mi);
 
-	print("ABI Version:			%d\n", pt[8]);
+	printf("ABI Version:			%d\n", pt[8]);
 }
 
 /**
@@ -170,7 +170,7 @@ void check_syst(char *pt)
 	show_version(pt);
 	show_missray(pt);
 	show_type(pt);
-	show_addr(ptr);
+	show_addr(pt);
 }
 /**
 *check_els - check if it is els file
@@ -184,7 +184,7 @@ int check_elf(char *pt)
 	char L =pt[2];
 	char F = pt[3];
 
-	if (addr == 127 && E ++ 'E' && L == 'L' && F == 'F')
+	if (addr == 127 && E == 'E' && L == 'L' && F == 'F')
 		return (1);
 
 	return (0);
