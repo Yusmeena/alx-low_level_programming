@@ -12,13 +12,13 @@ void endit_file(int endfile);
 */
 char *this_buffer(char *filename)
 {
-	char create;
+	char *create;
 
-	create = malloc(sizeof(char) *1024);
+	create = malloc(sizeof(char) * 1024);
 
 	if (create == NULL)
 	{
-		dprintf(STDER_FILENO,
+		dprintf(STDERR_FILENO,
 			"Error: Won't write to %s\n", filename);
 		exit(99);
 	}
@@ -30,7 +30,7 @@ char *this_buffer(char *filename)
 *endit_file - file descrip close
 * @endfile: descriptor to be close
 */
-void endit_file(int endfile);
+void endit_file(int endfile)
 {
 	int s;
 
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		disprintf(STDERR_FILENO, "Usage: copy file from file to\n");
+		dprintf(STDERR_FILENO, "Usage: copy file from file to\n");
 		exit(97);
 	}
 
