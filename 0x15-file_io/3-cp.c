@@ -36,9 +36,9 @@ void endit_file(int endfile)
 
 	s = close(endfile);
 
-	if (c == -1)
+	if (s == -1)
 	{
-		dprintf(STDER_FILENO, "Error: won't close folde %d\n", endfile);
+		dprintf(STDERR_FILENO, "Error: won't close folde %d\n", endfile);
 	}
 }
 
