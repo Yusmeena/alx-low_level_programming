@@ -1,4 +1,4 @@
-#include <stdio.h>
+ginclude <stdio.h>
 #include <stdlib.h>
 #include "main.h"
 
@@ -61,9 +61,9 @@ int main(int argc, char *argv[])
 	}
 
 	filename = this_buffer(argv[2]);
-	begin = open(argv[1], 0_RDONLY);
+	begin = open(argv[1], O_RDONLY);
 	rwt = read(begin, filename, 1024);
-	exe = open(argv[2], 0_CREAT | 0_WRONLY | 0_TRUNC, 0664);
+	exe = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
 		if (begin == -1 || rwt == -1)
