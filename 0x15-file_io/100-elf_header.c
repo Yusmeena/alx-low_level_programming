@@ -157,7 +157,7 @@ void check_syst(char *pt)
 	if (syst == '0')
 		exit(98);
 
-	print("ELF Header:\n");
+	printf("ELF Header:\n");
 	show_magic(pt);
 
 	if (syst =='1')
@@ -202,7 +202,15 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		dprint(STDERR_FILENO, "Usage: elf_headerelf_filename\n");
+		dprintf(STDERR_FILENO, "Usage: elf_headerelf_filename\n");
+		exit(98);
+	}
+
+	fold = open(argv[1], 0_RDONLY);
+
+	if (fold < 0)
+	{
+		dprintf(STDER_FILENO, "Err: file unable to open\n");
 		exit(98);
 	}
 
