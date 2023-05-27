@@ -16,7 +16,7 @@ void show_addr(char *pt)
 	int id;
 	int begin;
 	char syst;
-	
+
 	printf("  Entry point address:				0x");
 
 	syst = pt[4] = '0';
@@ -69,7 +69,7 @@ void show_type(char *pt)
 	else if (buffer == 1)
 		printf("REL (File can be relocateable )\n");
 	else if (buffer == 2)
-		printf("EXE (File can be executable)\n");
+		printf("EXE (Excutable File\n");
 	else if (buffer == 3)
 		printf("DYN (Shared object file)\n");
 	else if (buffer == 4)
@@ -78,7 +78,7 @@ void show_type(char *pt)
 		printf("<Unknown: %x>\n", buffer);
 }
 /**
-*show_missray(char *pt)
+*show_missray - a funtion show system version
 *@pt: pointer to an address
 */
 void show_missray(char *pt)
@@ -124,7 +124,7 @@ void show_data(char *pt)
 	printf(" Data:					2's complement");
 
 	if (data == 1)
-		printf(", small endian\n");
+		printf(", little  endian\n");
 
 	if (data == 2)
 		printf(", big endian\n");
@@ -146,7 +146,7 @@ void show_magic(char *pt)
 	printf("\n");
 }
 /**
-*check_syst - check the version of the system
+*check_syst - Function to check the version of the system
 *@pt: magic
 Return: there is no return
 */
@@ -160,7 +160,7 @@ void check_syst(char *pt)
 	printf("ELF Header:\n");
 	show_magic(pt);
 
-	if (syst =='1')
+	if (syst == '1')
 		printf("   Class:				ELF32\n");
 
 	if (syst == '2')
@@ -171,9 +171,10 @@ void check_syst(char *pt)
 	show_missray(pt);
 	show_type(pt);
 	show_addr(pt);
+return(0);
 }
 /**
-*check_els - check if it is els file
+*check_elf - check if it is els file
 *@pt: magic
 *Return: 1 if it is an elf, otherwise 0
 */
@@ -181,7 +182,7 @@ int check_elf(char *pt)
 {
 	int addr = (int)pt[0];
 	char E = pt[1];
-	char L =pt[2];
+	char L = pt[2];
 	char F = pt[3];
 
 	if (addr == 127 && E == 'E' && L == 'L' && F == 'F')
