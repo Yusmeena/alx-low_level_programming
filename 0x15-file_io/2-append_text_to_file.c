@@ -9,16 +9,16 @@
 */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int file;
+	int filed;
 	int letters;
 	int rwr;
 
 	if (!filename)
 		return (-1);
 
-	file = open(filename, O_WRONLY | O_APPEND);
+	filed = open(filename, O_WRONLY | O_APPEND);
 
-	if (file == -1)
+	if (filed == -1)
 		return (-1);
 
 	if (text_content)
@@ -26,12 +26,12 @@ int append_text_to_file(const char *filename, char *text_content)
 		for (letters = 0; text_content[letters]; letters++)
 			;
 
-		rwr = write(file, text_content, letters);
+		rwr = write(filed, text_content, letters);
 
 		if (rwr == -1)
 			return (-1);
 	}
-	close(file);
+	close(filed);
 
 	return (1);
 }
