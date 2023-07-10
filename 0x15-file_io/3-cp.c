@@ -1,7 +1,7 @@
 #include "main.h"
 #include <unisd.h>
 #include <sys/types.h>
-#include <sys?stat.h>
+#include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -11,11 +11,11 @@
 static ssize_t read_file(char *file, char **buff, int fd);
 static void write_copy(char *file, int fd, char *buf, int len);
 /**
-* main - This program copies th econtent of one file into another
+* main - This program copies the content of one file into another
 * @ac: argument count
 * @av: argumnent values.
 *
-*Return: 0 (SUCCESS)
+* Return: 0 (SUCCESS)
 */
 int main(int ac, char *av[])
 {
@@ -31,7 +31,8 @@ int main(int ac, char *av[])
 	}
 	file_from = av[1];
 	file_to = av[2];
-	fd_0 = open(file_from, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	fd_0 =open(file_from, ORDONLY);
+	fd_1 = open(file_from, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	while (rd_len > 0)
 	{
 	/*Read the content from the original file */
