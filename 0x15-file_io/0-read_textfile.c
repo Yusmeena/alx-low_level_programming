@@ -9,7 +9,7 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int filed;
-	ssize_t, nrd, nwr;
+	ssize_t nrd, nwr;
 	char *buff;
 
 	if (!filename)
