@@ -79,7 +79,7 @@ static ssize_t read_file(char *file, char **buf, int fd)
 		*buf = malloc(sizeof(char) * BUFSIZE);
 	if (!(*buf))
 	{
-		dprintf(STDEER_FILENO, "Error: Can't read from file %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
 		exit(98);
 	}
 	rd_len = read(fd, *buf, BUFSIZE);
