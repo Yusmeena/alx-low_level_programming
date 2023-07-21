@@ -97,7 +97,7 @@ static ssize_t read_file(char *file, char **buf, int fd)
 * @file: destination for contents in buffer
 * @fd: file descriptors for the @file
 * @buf: pointer t o a buffer
-*@len: current size of the buffer
+* @len: current size of the buffer
 */
 static void write_copy(char *file, int fd, char *buf, int len)
 {
