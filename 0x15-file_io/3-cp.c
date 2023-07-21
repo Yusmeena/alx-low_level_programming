@@ -31,7 +31,7 @@ int main(int ac, char *av[])
 	}
 	file_from = av[1];
 	file_to = av[2];
-	fd_0 =open(file_from, O_RDONLY);
+	fd_0 = open(file_from, O_RDONLY);
 	fd_1 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	while (rd_len > 0)
 	{
