@@ -35,11 +35,11 @@ int main(int ac, char *av[])
 	fd_1 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	while (rd_len > 0)
 	{
-	/*Read the content from the original file */
+	/* Read the content from the origin file */
 	rd_len = read_file(file_from, &buff, fd_0);
 	if (!rd_len)
 		break;
-	/*Write out the buffer to destination */
+	/* Write out the buffer to destination */
 	write_copy(file_to, fd_1, buff, rd_len);
 	}
 
@@ -47,7 +47,7 @@ int main(int ac, char *av[])
 	error = close(fd_0);
 	if (error < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Cant't close fd %d\n", fd_0);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_0);
 		exit(100);
 	}
 	error = close(fd_1);
@@ -61,8 +61,8 @@ int main(int ac, char *av[])
 /**
 * read_file - function that read a file into a buffer
 * @file: file to read from
-* @buf: pointer to a pointer of a bvuffer.
-* @fd: file descroiptors
+* @buf: pointer to a pointer of a buffer.
+* @fd: file descriptors
 *
 * Return: the current size of the buffer.
 */
@@ -95,8 +95,8 @@ static ssize_t read_file(char *file, char **buf, int fd)
 /**
 * write_copy - write the buffer to a file
 * @file: destination for contents in buffer
-* @fd: file descriptors for the @file
-* @buf: pointer t o a buffer
+* @fd: file descriptors for the file
+* @buf: pointer to a buffer
 * @len: current size of the buffer
 */
 static void write_copy(char *file, int fd, char *buf, int len)
