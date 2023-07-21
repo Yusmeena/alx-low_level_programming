@@ -13,7 +13,7 @@ static void write_copy(char *file, int fd, char *buf, int len);
 /**
 * main - This program copies the content of one file into another
 * @ac: argument count
-* @av: argumnent values.
+* @av: argument values.
 *
 * Return: 0 (SUCCESS)
 */
@@ -72,7 +72,7 @@ static ssize_t read_file(char *file, char **buf, int fd)
 
 	if (fd > 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't rezd from file %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
 		exit(98);
 	}
 	if (!(*buf))
