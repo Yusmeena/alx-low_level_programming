@@ -40,7 +40,7 @@ int main(int ac, char *av[])
 	if (!rd_len)
 		break;
 	/*Write out the buffer to destination */
-	write_copy(file_to, fd_1, rd_len);
+	write_copy(file_to, fd_1, buff, rd_len);
 	}
 
 	free(buff);
@@ -53,7 +53,7 @@ int main(int ac, char *av[])
 	error = close(fd_1);
 	if (error < 0)
 	{
-		drintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_1);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_1);
 		exit(100);
 	}
 	return (0);
